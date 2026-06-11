@@ -2,6 +2,7 @@
 <html lang="ru">
 
 <head>
+    <link rel="icon" href="./favicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CodeHub — Все курсы Python</title>
@@ -19,7 +20,6 @@
             min-height: 100vh;
         }
 
-        /* Header */
         header {
             background: #161b22;
             border-bottom: 1px solid #30363d;
@@ -31,6 +31,7 @@
             justify-content: space-between;
             align-items: center;
             gap: 20px;
+            flex-wrap: wrap;
         }
 
         .logo {
@@ -46,7 +47,7 @@
             color: #00ff88;
         }
 
-        /* Tabs */
+        /* Простые вкладки (без разделения на бесплатные/платные, но оставим для удобства) */
         .tabs {
             display: flex;
             gap: 5px;
@@ -75,52 +76,45 @@
             color: #00ff88;
         }
 
-        .tab.pro.active {
-            color: #ffa657;
-        }
-
-        .user-info {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            color: #8b949e;
-            font-size: 13px;
-        }
-
-        .balance {
-            background: #0d1117;
-            border: 1px solid #ffa657;
-            padding: 6px 12px;
-            border-radius: 6px;
-            color: #ffa657;
+        /* Кнопка поддержки */
+        .donate-btn {
+            background: linear-gradient(90deg, #ff4757, #ff6b81);
+            border: none;
+            padding: 8px 20px;
+            border-radius: 40px;
+            color: white;
             font-weight: bold;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 14px;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 2px 8px rgba(255, 71, 87, 0.3);
         }
 
-        /* Layout */
+        .donate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 71, 87, 0.4);
+        }
+
         .container {
             display: flex;
             max-width: 1400px;
             margin: 0 auto;
         }
 
-        /* Sidebar */
         .sidebar {
             width: 300px;
             background: #161b22;
             border-right: 1px solid #30363d;
-            height: calc(100vh - 60px);
+            height: calc(100vh - 70px);
             position: sticky;
-            top: 60px;
+            top: 70px;
             overflow-y: auto;
             padding: 20px 0;
-        }
-
-        .sidebar h3 {
-            color: #8b949e;
-            font-size: 12px;
-            text-transform: uppercase;
-            padding: 0 20px 10px;
-            letter-spacing: 1px;
         }
 
         .section-divider {
@@ -132,12 +126,6 @@
             margin-top: 10px;
             display: flex;
             justify-content: space-between;
-            align-items: center;
-        }
-
-        .section-divider .count {
-            color: #6e7681;
-            font-size: 10px;
         }
 
         .course-item {
@@ -156,28 +144,13 @@
             color: #00ff88;
         }
 
-        .course-item.pro:hover {
-            color: #ffa657;
-        }
-
         .course-item.active {
             background: #0d1117;
             border-left-color: #00ff88;
             color: #00ff88;
         }
 
-        .course-item.pro.active {
-            border-left-color: #ffa657;
-            color: #ffa657;
-        }
-
-        .course-item .num {
-            color: #6e7681;
-            font-size: 12px;
-            min-width: 30px;
-        }
-
-        .course-item .badge {
+        .badge {
             margin-left: auto;
             font-size: 10px;
             padding: 2px 6px;
@@ -189,45 +162,13 @@
             border: 1px solid #00ff88;
         }
 
-        .badge.paid {
-            color: #ffa657;
-            border: 1px solid #ffa657;
-        }
-
-        .badge.locked {
-            color: #6e7681;
-            border: 1px solid #30363d;
-        }
-
-        .badge.owned {
-            color: #58a6ff;
-            border: 1px solid #58a6ff;
-        }
-
-        /* Main content */
         .content {
             flex: 1;
             padding: 40px 50px;
             max-width: 1000px;
         }
 
-        .breadcrumb {
-            color: #6e7681;
-            font-size: 13px;
-            margin-bottom: 20px;
-        }
-
-        .breadcrumb span {
-            color: #00ff88;
-        }
-
-        .course-item.pro~* .breadcrumb span,
-        .pro-mode .breadcrumb span {
-            color: #ffa657;
-        }
-
         h1 {
-            color: #c9d1d9;
             font-size: 36px;
             margin-bottom: 10px;
         }
@@ -239,46 +180,15 @@
 
         .course-desc {
             color: #8b949e;
-            font-size: 16px;
             margin-bottom: 20px;
             line-height: 1.6;
-        }
-
-        .course-info {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-
-        .info-badge {
-            background: #161b22;
-            border: 1px solid #30363d;
-            padding: 8px 15px;
-            border-radius: 6px;
-            font-size: 13px;
-            color: #c9d1d9;
-        }
-
-        .info-badge::before {
-            content: '▸ ';
-            color: #00ff88;
-        }
-
-        .pro-mode .info-badge::before {
-            color: #ffa657;
         }
 
         h2 {
             color: #58a6ff;
             font-size: 24px;
             margin: 30px 0 15px;
-            padding-bottom: 8px;
             border-bottom: 1px solid #30363d;
-        }
-
-        .pro-mode h2 {
-            color: #ffa657;
         }
 
         h2::before {
@@ -286,34 +196,6 @@
             color: #6e7681;
         }
 
-        h3 {
-            color: #7ee787;
-            font-size: 18px;
-            margin: 20px 0 10px;
-        }
-
-        h3::before {
-            content: '### ';
-            color: #6e7681;
-        }
-
-        p {
-            line-height: 1.7;
-            margin-bottom: 15px;
-            color: #c9d1d9;
-        }
-
-        ul,
-        ol {
-            margin: 10px 0 20px 30px;
-            line-height: 1.8;
-        }
-
-        li {
-            margin-bottom: 8px;
-        }
-
-        /* Code blocks */
         .code-block {
             background: #161b22;
             border: 1px solid #30363d;
@@ -336,47 +218,8 @@
         .code-block pre {
             color: #c9d1d9;
             font-size: 14px;
-            line-height: 1.6;
         }
 
-        .keyword {
-            color: #ff7b72;
-        }
-
-        .function {
-            color: #d2a8ff;
-        }
-
-        .string {
-            color: #a5d6ff;
-        }
-
-        .comment {
-            color: #8b949e;
-            font-style: italic;
-        }
-
-        .variable {
-            color: #ffa657;
-        }
-
-        .number {
-            color: #79c0ff;
-        }
-
-        .operator {
-            color: #ff7b72;
-        }
-
-        .decorator {
-            color: #d2a8ff;
-        }
-
-        .class-name {
-            color: #ffa657;
-        }
-
-        /* Output */
         .output {
             background: #0d1117;
             border-left: 3px solid #00ff88;
@@ -384,7 +227,6 @@
             margin: 10px 0 20px;
             border-radius: 0 6px 6px 0;
             color: #7ee787;
-            font-size: 14px;
         }
 
         .output::before {
@@ -392,7 +234,6 @@
             color: #6e7681;
         }
 
-        /* Task */
         .task {
             background: rgba(0, 255, 136, 0.05);
             border: 1px solid #00ff88;
@@ -401,110 +242,39 @@
             margin: 25px 0;
         }
 
-        .pro-mode .task {
-            background: rgba(255, 166, 87, 0.05);
-            border-color: #ffa657;
-        }
-
         .task-title {
             color: #00ff88;
             font-weight: bold;
             margin-bottom: 10px;
-            font-size: 16px;
-        }
-
-        .pro-mode .task-title {
-            color: #ffa657;
         }
 
         .task-title::before {
             content: '🎯 ';
         }
 
-        .task-hint {
-            color: #8b949e;
-            font-size: 13px;
-            margin-top: 10px;
-            font-style: italic;
-        }
-
-        .task-hint::before {
-            content: '💡 Подсказка: ';
-            color: #ffa657;
-            font-style: normal;
-        }
-
-        /* Locked screen */
-        .locked-screen {
+        .lessons-box {
             background: #161b22;
-            border: 2px solid #ffa657;
-            border-radius: 12px;
-            padding: 50px 30px;
-            text-align: center;
-            margin: 30px 0;
-        }
-
-        .lock-icon {
-            font-size: 64px;
-            margin-bottom: 20px;
-        }
-
-        .locked-screen h2 {
-            border: none;
-            color: #ffa657;
-            margin-bottom: 15px;
-        }
-
-        .price-tag {
-            font-size: 48px;
-            color: #ffa657;
-            font-weight: bold;
-            margin: 20px 0;
-        }
-
-        .price-tag::after {
-            content: ' ₽';
-            font-size: 32px;
-        }
-
-        .buy-btn {
-            background: linear-gradient(90deg, #ffa657, #ff7b72);
-            color: #0d1117;
-            border: none;
-            padding: 15px 40px;
+            border: 1px solid #30363d;
             border-radius: 8px;
-            font-size: 16px;
-            font-weight: bold;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .lesson-item {
+            padding: 10px;
+            margin: 5px 0;
+            background: #0d1117;
+            border-radius: 4px;
             cursor: pointer;
-            font-family: inherit;
-            margin-top: 20px;
-            transition: all 0.2s;
+            display: flex;
+            gap: 10px;
+            align-items: center;
         }
 
-        .buy-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(255, 166, 87, 0.3);
+        .lesson-item:hover {
+            background: #1c2128;
         }
 
-        .buy-btn::before {
-            content: '💎 ';
-        }
-
-        .features {
-            text-align: left;
-            max-width: 500px;
-            margin: 30px auto;
-        }
-
-        .features li {
-            color: #c9d1d9;
-        }
-
-        .features li::marker {
-            color: #ffa657;
-        }
-
-        /* Navigation */
         .nav-buttons {
             display: flex;
             justify-content: space-between;
@@ -521,30 +291,11 @@
             border-radius: 6px;
             cursor: pointer;
             font-family: inherit;
-            font-size: 14px;
-            transition: all 0.2s;
-        }
-
-        .pro-mode .nav-btn {
-            color: #ffa657;
         }
 
         .nav-btn:hover {
             border-color: #58a6ff;
             background: rgba(88, 166, 255, 0.1);
-        }
-
-        .pro-mode .nav-btn:hover {
-            border-color: #ffa657;
-            background: rgba(255, 166, 87, 0.1);
-        }
-
-        .nav-btn.next::after {
-            content: ' →';
-        }
-
-        .nav-btn.prev::before {
-            content: '← ';
         }
 
         .nav-btn:disabled {
@@ -559,110 +310,7 @@
             padding: 10px 20px;
             border-radius: 6px;
             cursor: pointer;
-            font-family: inherit;
-            font-size: 14px;
             font-weight: bold;
-        }
-
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal.active {
-            display: flex;
-        }
-
-        .modal-content {
-            background: #161b22;
-            border: 1px solid #ffa657;
-            border-radius: 12px;
-            padding: 40px;
-            max-width: 500px;
-            width: 90%;
-            text-align: center;
-        }
-
-        .modal-content h2 {
-            border: none;
-            color: #ffa657;
-        }
-
-        .payment-methods {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin: 20px 0;
-        }
-
-        .payment-method {
-            background: #0d1117;
-            border: 1px solid #30363d;
-            padding: 15px;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .payment-method:hover {
-            border-color: #ffa657;
-        }
-
-        .payment-method.selected {
-            border-color: #ffa657;
-            background: rgba(255, 166, 87, 0.1);
-        }
-
-        /* Lesson list */
-        .lessons-box {
-            background: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 8px;
-            padding: 15px;
-            margin: 15px 0;
-        }
-
-        .lesson-item {
-            padding: 10px;
-            margin: 5px 0;
-            background: #0d1117;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .lesson-item:hover {
-            background: #1c2128;
-        }
-
-        /* Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #0d1117;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #30363d;
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #58a6ff;
         }
 
         @media (max-width: 768px) {
@@ -677,14 +325,19 @@
             h1 {
                 font-size: 26px;
             }
+        }
 
-            .tabs {
-                font-size: 12px;
-            }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
 
-            .tab {
-                padding: 6px 12px;
-            }
+        ::-webkit-scrollbar-track {
+            background: #0d1117;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #30363d;
+            border-radius: 4px;
         }
     </style>
 </head>
@@ -692,718 +345,239 @@
 <body>
     <header>
         <div class="logo" onclick="showHome()">CodeHub</div>
-
         <div class="tabs">
-            <div class="tab active" id="tabFree" onclick="switchTab('free')">
-                📘 Бесплатные
-            </div>
-            <div class="tab pro" id="tabPro" onclick="switchTab('pro')">
-                💎 Pro-курсы
-            </div>
+            <div class="tab active" onclick="switchTab('all')">📚 Все курсы</div>
         </div>
-
-        <div class="user-info" id="userInfo" style="display:none;">
-            <span>user@codehub</span>
-            <div class="balance">💰 <span id="balance">500</span> ₽</div>
-        </div>
+        <!-- Кнопка поддержки проекта с ссылкой на ЮMoney -->
+        <a href="https://yoomoney.ru/fundraise/1I9526CPHHL.260608" target="_blank" class="donate-btn">
+            ❤️ Поддержать проект
+        </a>
     </header>
 
     <div class="container">
-        <aside class="sidebar" id="sidebar">
-            <!-- Курсы будут рендериться динамически -->
-        </aside>
-
-        <main class="content" id="content">
-            <!-- Контент курсов -->
-        </main>
-    </div>
-
-    <!-- Modal оплаты -->
-    <div class="modal" id="paymentModal">
-        <div class="modal-content">
-            <h2>💎 Покупка курса</h2>
-            <p id="modalCourseName" style="color:#8b949e; margin-bottom: 20px;"></p>
-            <div class="price-tag" id="modalPrice">50</div>
-            <p style="color:#8b949e;">Выберите способ оплаты:</p>
-            <div class="payment-methods">
-                <div class="payment-method selected" onclick="selectPayment(this, 'card')">💳 Карта</div>
-                <div class="payment-method" onclick="selectPayment(this, 'sbp')">📱 СБП</div>
-                <div class="payment-method" onclick="selectPayment(this, 'yoomoney')">🟧 ЮMoney</div>
-                <div class="payment-method" onclick="selectPayment(this, 'crypto')">₿ Крипто</div>
-            </div>
-            <button class="buy-btn" onclick="confirmPurchase()">Оплатить и получить доступ</button>
-            <p style="margin-top: 20px;">
-                <a href="#" onclick="closeModal()" style="color:#8b949e;">Отмена</a>
-            </p>
-        </div>
+        <aside class="sidebar" id="sidebar"></aside>
+        <main class="content" id="content"></main>
     </div>
 
     <script>
         // ============================================
-        // ВСЕ 20 КУРСОВ В ОДНОМ МАССИВЕ
+        // ВСЕ 20 КУРСОВ — ПОЛНОСТЬЮ БЕСПЛАТНЫЕ
         // ============================================
 
         const allCourses = [
-            // БЕСПЛАТНЫЕ КУРСЫ (0-9)
             {
-                id: 0, type: 'free',
-                title: "Python для начинающих",
-                desc: "Самый первый шаг в мир программирования. Установка Python, первая программа, основы синтаксиса.",
+                id: 0, title: "Python для начинающих",
+                desc: "Первый шаг в мир программирования. Установка, первая программа, основы синтаксиса.",
                 lessons: [
                     {
-                        title: "Урок 1.1: Введение в Python",
-                        content: `
-                            <h3>Что такое Python?</h3>
-                            <p>Python — это высокоуровневый язык программирования с простым и читаемым синтаксисом.</p>
-                            <ul>
-                                <li>🌐 Веб-разработка</li>
-                                <li>🤖 Искусственный интеллект</li>
-                                <li>📊 Анализ данных</li>
-                                <li>⚙️ Автоматизация</li>
-                            </ul>
-                            <h3>Первая программа</h3>
-                            <div class="code-block">
-<pre><span class="keyword">print</span>(<span class="string">"Hello, World!"</span>)</pre>
-                            </div>
-                            <div class="output">Hello, World!</div>
-                            <div class="task">
-                                <div class="task-title">Задание</div>
-                                <p>Выведите на экран: "Я изучаю Python!"</p>
-                            </div>
-                        `
-                    },
-                    {
-                        title: "Урок 1.2: Переменные",
-                        content: `
-                            <h3>Что такое переменная?</h3>
-                            <p>Переменная — это имя, которое хранит значение.</p>
-                            <div class="code-block">
-<pre><span class="variable">name</span> = <span class="string">"Алексей"</span>
-<span class="variable">age</span> = <span class="number">25</span>
-<span class="variable">is_student</span> = <span class="keyword">True</span>
-
-<span class="keyword">print</span>(<span class="variable">name</span>, <span class="variable">age</span>, <span class="variable">is_student</span>)</pre>
-                            </div>
-                            <div class="output">Алексей 25 True</div>
-                            <div class="task">
-                                <div class="task-title">Задание</div>
-                                <p>Создайте переменные: city, temperature, is_sunny. Выведите их.</p>
-                            </div>
-                        `
-                    },
-                    {
-                        title: "Урок 1.3: Ввод данных",
-                        content: `
-                            <h3>Функция input()</h3>
-                            <div class="code-block">
-<pre><span class="variable">name</span> = <span class="keyword">input</span>(<span class="string">"Как тебя зовут? "</span>)
-<span class="keyword">print</span>(<span class="string">"Привет, "</span> + <span class="variable">name</span>)</pre>
-                            </div>
-                            <div class="task">
-                                <div class="task-title">Задание</div>
-                                <p>Спросите имя и возраст, выведите приветствие.</p>
-                            </div>
-                        `
-                    }
+                        title: "Урок 1.1: Введение в Python", content: `
+                    <h3>Что такое Python?</h3>
+                    <p>Python — высокоуровневый язык с простым синтаксисом.</p>
+                    <ul><li>🌐 Веб-разработка</li><li>🤖 ИИ</li><li>📊 Анализ данных</li></ul>
+                    <div class="code-block"><pre><span style="color:#ff7b72;">print</span>(<span style="color:#a5d6ff;">"Hello, World!"</span>)</pre></div>
+                    <div class="output">Hello, World!</div>
+                    <div class="task"><div class="task-title">Задание</div><p>Выведите "Я изучаю Python!"</p></div>
+                ` }
                 ]
             },
             {
-                id: 1, type: 'free',
-                title: "Типы данных и операторы",
-                desc: "Изучаем основные типы данных в Python и операции над ними.",
+                id: 1, title: "Типы данных и операторы",
+                desc: "Числа, строки, операции и приведение типов.",
                 lessons: [
-                    {
-                        title: "Урок 2.1: Типы данных",
-                        content: `
-                            <h3>Основные типы</h3>
-                            <div class="code-block">
-<pre><span class="comment"># int, float, str, bool</span>
-<span class="variable">x</span> = <span class="number">42</span>          <span class="comment"># int</span>
-<span class="variable">pi</span> = <span class="number">3.14</span>       <span class="comment"># float</span>
-<span class="variable">msg</span> = <span class="string">"Hi"</span>     <span class="comment"># str</span>
-<span class="variable">flag</span> = <span class="keyword">True</span>    <span class="comment"># bool</span>
-
-<span class="keyword">print</span>(<span class="keyword">type</span>(<span class="variable">x</span>))   <span class="comment"># &lt;class 'int'&gt;</span></pre>
-                            </div>
-                            <div class="task">
-                                <div class="task-title">Задание</div>
-                                <p>Создайте переменные всех типов и выведите их типы.</p>
-                            </div>
-                        `
-                    },
-                    {
-                        title: "Урок 2.2: Арифметика",
-                        content: `
-                            <h3>Операции с числами</h3>
-                            <div class="code-block">
-<pre><span class="variable">a</span>, <span class="variable">b</span> = <span class="number">10</span>, <span class="number">3</span>
-<span class="keyword">print</span>(<span class="variable">a</span> <span class="operator">+</span> <span class="variable">b</span>)   <span class="comment"># 13</span>
-<span class="keyword">print</span>(<span class="variable">a</span> <span class="operator">**</span> <span class="variable">b</span>)  <span class="comment"># 1000</span>
-<span class="keyword">print</span>(<span class="variable">a</span> <span class="operator">%</span> <span class="variable">b</span>)   <span class="comment"># 1</span></pre>
-                            </div>
-                            <div class="task">
-                                <div class="task-title">Задание</div>
-                                <p>Сделайте калькулятор для двух чисел.</p>
-                            </div>
-                        `
-                    }
+                    { title: "Урок 2.1: Типы данных", content: `<h3>int, float, str, bool</h3><div class="code-block"><pre>x = 42\npi = 3.14\nname = "Анна"\nis_ok = True</pre></div><div class="task"><div class="task-title">Задание</div><p>Создайте переменные всех типов.</p></div>` }
                 ]
             },
             {
-                id: 2, type: 'free', title: "Условия и циклы", desc: "Управление потоком выполнения программы.", lessons: [
-                    {
-                        title: "Урок 3.1: if/elif/else",
-                        content: `
-                        <h3>Условный оператор</h3>
-                        <div class="code-block">
-<pre><span class="keyword">if</span> <span class="variable">age</span> <span class="operator">&gt;=</span> <span class="number">18</span>:
-    <span class="keyword">print</span>(<span class="string">"Взрослый"</span>)
-<span class="keyword">elif</span> <span class="variable">age</span> <span class="operator">&gt;=</span> <span class="number">14</span>:
-    <span class="keyword">print</span>(<span class="string">"Подросток"</span>)
-<span class="keyword">else</span>:
-    <span class="keyword">print</span>(<span class="string">"Ребёнок"</span>)</pre>
-                        </div>
-                    `
-                    },
-                    {
-                        title: "Урок 3.2: Циклы for/while",
-                        content: `
-                        <h3>Цикл for</h3>
-                        <div class="code-block">
-<pre><span class="keyword">for</span> <span class="variable">i</span> <span class="keyword">in</span> <span class="function">range</span>(<span class="number">5</span>):
-    <span class="keyword">print</span>(<span class="variable">i</span>)
-
-<span class="variable">n</span> = <span class="number">0</span>
-<span class="keyword">while</span> <span class="variable">n</span> <span class="operator">&lt;</span> <span class="number">3</span>:
-    <span class="keyword">print</span>(<span class="variable">n</span>)
-    <span class="variable">n</span> <span class="operator">+=</span> <span class="number">1</span></pre>
-                        </div>
-                    `
-                    }
-                ]
-            },
-            {
-                id: 3, type: 'free', title: "Функции", desc: "Создание переиспользуемых блоков кода.", lessons: [
-                    {
-                        title: "Урок 4.1: def, return, параметры",
-                        content: `
-                        <h3>Создание функций</h3>
-                        <div class="code-block">
-<pre><span class="keyword">def</span> <span class="function">greet</span>(<span class="variable">name</span>):
-    <span class="keyword">return</span> <span class="string">f"Привет, {name}!"</span>
-
-<span class="keyword">print</span>(<span class="function">greet</span>(<span class="string">"Мир"</span>))</pre>
-                        </div>
-                        <div class="output">Привет, Мир!</div>
-                    `
-                    }
-                ]
-            },
-            {
-                id: 4, type: 'free', title: "Списки, кортежи, словари", desc: "Коллекции Python.", lessons: [
-                    {
-                        title: "Урок 5.1: Списки",
-                        content: `
-                        <h3>Список (list)</h3>
-                        <div class="code-block">
-<pre><span class="variable">fruits</span> = [<span class="string">"яблоко"</span>, <span class="string">"банан"</span>, <span class="string">"вишня"</span>]
-<span class="variable">fruits</span>.<span class="function">append</span>(<span class="string">"апельсин"</span>)
-<span class="keyword">print</span>(<span class="variable">fruits</span>[<span class="number">0</span>])</pre>
-                        </div>
-                    `
-                    }
-                ]
-            },
-            {
-                id: 5, type: 'free', title: "Работа с файлами", desc: "Чтение и запись файлов.", lessons: [
-                    {
-                        title: "Урок 6.1: open(), read(), write()",
-                        content: `
-                        <h3>Чтение и запись</h3>
-                        <div class="code-block">
-<pre><span class="keyword">with</span> <span class="function">open</span>(<span class="string">"file.txt"</span>, <span class="string">"w"</span>) <span class="keyword">as</span> <span class="variable">f</span>:
-    <span class="variable">f</span>.<span class="function">write</span>(<span class="string">"Hello"</span>)
-
-<span class="keyword">with</span> <span class="function">open</span>(<span class="string">"file.txt"</span>, <span class="string">"r"</span>) <span class="keyword">as</span> <span class="variable">f</span>:
-    <span class="keyword">print</span>(<span class="variable">f</span>.<span class="function">read</span>())</pre>
-                        </div>
-                    `
-                    }
-                ]
-            },
-            {
-                id: 6, type: 'free', title: "ООП: Классы", desc: "Объектно-ориентированное программирование.", lessons: [
-                    {
-                        title: "Урок 7.1: Классы и объекты",
-                        content: `
-                        <h3>Создание класса</h3>
-                        <div class="code-block">
-<pre><span class="keyword">class</span> <span class="class-name">Dog</span>:
-    <span class="keyword">def</span> <span class="function">__init__</span>(<span class="variable">self</span>, <span class="variable">name</span>):
-        <span class="variable">self</span>.<span class="variable">name</span> = <span class="variable">name</span>
-
-    <span class="keyword">def</span> <span class="function">bark</span>(<span class="variable">self</span>):
-        <span class="keyword">print</span>(<span class="variable">self</span>.<span class="variable">name</span> <span class="operator">+</span> <span class="string">" Гав!"</span>)
-
-<span class="variable">dog</span> = <span class="class-name">Dog</span>(<span class="string">"Бобик"</span>)
-<span class="variable">dog</span>.<span class="function">bark</span>()</pre>
-                        </div>
-                    `
-                    }
-                ]
-            },
-            {
-                id: 7, type: 'free', title: "Обработка ошибок", desc: "try/except и надёжный код.", lessons: [
-                    {
-                        title: "Урок 8.1: try/except",
-                        content: `
-                        <h3>Обработка исключений</h3>
-                        <div class="code-block">
-<pre><span class="keyword">try</span>:
-    <span class="variable">x</span> = <span class="keyword">int</span>(<span class="keyword">input</span>(<span class="string">"Число: "</span>))
-    <span class="keyword">print</span>(<span class="number">10</span> <span class="operator">/</span> <span class="variable">x</span>)
-<span class="keyword">except</span> <span class="variable">ZeroDivisionError</span>:
-    <span class="keyword">print</span>(<span class="string">"На ноль нельзя!"</span>)</pre>
-                        </div>
-                    `
-                    }
-                ]
-            },
-            {
-                id: 8, type: 'free', title: "Модули и pip", desc: "Использование библиотек.", lessons: [
-                    {
-                        title: "Урок 9.1: import",
-                        content: `
-                        <h3>Стандартные модули</h3>
-                        <div class="code-block">
-<pre><span class="keyword">import</span> <span class="variable">random</span>
-<span class="keyword">print</span>(<span class="variable">random</span>.<span class="function">randint</span>(<span class="number">1</span>, <span class="number">100</span>))</pre>
-                        </div>
-                    `
-                    }
-                ]
-            },
-            {
-                id: 9, type: 'free', title: "Продвинутый ООП", desc: "Магические методы и инкапсуляция.", lessons: [
-                    {
-                        title: "Урок 10.1: Магические методы",
-                        content: `
-                        <h3>__str__, __len__</h3>
-                        <div class="code-block">
-<pre><span class="keyword">class</span> <span class="class-name">Book</span>:
-    <span class="keyword">def</span> <span class="function">__init__</span>(<span class="variable">self</span>, <span class="variable">title</span>):
-        <span class="variable">self</span>.<span class="variable">title</span> = <span class="variable">title</span>
-    <span class="keyword">def</span> <span class="function">__str__</span>(<span class="variable">self</span>):
-        <span class="keyword">return</span> <span class="string">f"Книга: {self.title}"</span></pre>
-                        </div>
-                    `
-                    }
-                ]
-            },
-
-            // ПЛАТНЫЕ КУРСЫ (10-19)
-            {
-                id: 10, type: 'pro', price: 50,
-                title: "Декораторы",
-                desc: "Магический инструмент Python. Расширяйте поведение функций.",
+                id: 2, title: "Условия и циклы",
+                desc: "if/else, for, while — управление потоком.",
                 lessons: [
-                    {
-                        title: "Урок 11.1: Что такое декоратор",
-                        content: `
-                            <h3>Концепция</h3>
-                            <p>Декоратор — функция, которая оборачивает другую функцию, расширяя её поведение.</p>
-                            <div class="code-block">
-<pre><span class="keyword">def</span> <span class="function">my_decorator</span>(<span class="variable">func</span>):
-    <span class="keyword">def</span> <span class="function">wrapper</span>():
-        <span class="keyword">print</span>(<span class="string">"До"</span>)
-        <span class="variable">func</span>()
-        <span class="keyword">print</span>(<span class="string">"После"</span>)
-    <span class="keyword">return</span> <span class="variable">wrapper</span>
-
-<span class="decorator">@my_decorator</span>
-<span class="keyword">def</span> <span class="function">hello</span>():
-    <span class="keyword">print</span>(<span class="string">"Привет"</span>)
-
-<span class="variable">hello</span>()</pre>
-                            </div>
-                            <div class="output">До</div>
-                            <div class="output">Привет</div>
-                            <div class="output">После</div>
-                            <div class="task">
-                                <div class="task-title">Задание</div>
-                                <p>Создайте декоратор <code>timing</code> для измерения времени выполнения.</p>
-                            </div>
-                        `
-                    }
+                    { title: "Урок 3.1: if/else", content: `<div class="code-block"><pre>age = 18\nif age >= 18:\n    print("Взрослый")\nelse:\n    print("Ребёнок")</pre></div>` }
                 ]
             },
             {
-                id: 11, type: 'pro', price: 50,
-                title: "Генераторы",
-                desc: "Ленивые вычисления и эффективная работа с данными.",
+                id: 3, title: "Функции",
+                desc: "def, return, аргументы, области видимости.",
                 lessons: [
-                    {
-                        title: "Урок 12.1: yield",
-                        content: `
-                            <h3>Ключевое слово yield</h3>
-                            <div class="code-block">
-<pre><span class="keyword">def</span> <span class="function">fib</span>():
-    <span class="variable">a</span>, <span class="variable">b</span> = <span class="number">0</span>, <span class="number">1</span>
-    <span class="keyword">while</span> <span class="keyword">True</span>:
-        <span class="keyword">yield</span> <span class="variable">a</span>
-        <span class="variable">a</span>, <span class="variable">b</span> = <span class="variable">b</span>, <span class="variable">a</span> <span class="operator">+</span> <span class="variable">b</span>
-
-<span class="keyword">for</span> <span class="variable">i</span>, <span class="variable">x</span> <span class="keyword">in</span> <span class="function">enumerate</span>(<span class="function">fib</span>()):
-    <span class="keyword">if</span> <span class="variable">i</span> <span class="operator">&gt;=</span> <span class="number">5</span>: <span class="keyword">break</span>
-    <span class="keyword">print</span>(<span class="variable">x</span>)</pre>
-                            </div>
-                        `
-                    }
+                    { title: "Урок 4.1: Создание функций", content: `<div class="code-block"><pre>def greet(name):\n    return f"Привет, {name}!"\n\nprint(greet("Мир"))</pre></div><div class="output">Привет, Мир!</div>` }
                 ]
             },
             {
-                id: 12, type: 'pro', price: 50,
-                title: "Метаклассы",
-                desc: "Классы, которые создают классы.",
+                id: 4, title: "Списки и словари",
+                desc: "Коллекции данных: list, dict, tuple.",
                 lessons: [
-                    {
-                        title: "Урок 13.1: type и метаклассы",
-                        content: `
-                            <h3>Классы — это объекты</h3>
-                            <div class="code-block">
-<pre><span class="comment"># type создаёт классы динамически</span>
-<span class="variable">User</span> = <span class="function">type</span>(<span class="string">'User'</span>, (), {<span class="string">'name'</span>: <span class="string">'Иван'</span>})
-<span class="variable">u</span> = <span class="variable">User</span>()
-<span class="keyword">print</span>(<span class="variable">u</span>.<span class="variable">name</span>)  <span class="comment"># Иван</span></pre>
-                            </div>
-                        `
-                    }
+                    { title: "Урок 5.1: Списки", content: `<div class="code-block"><pre>fruits = ["яблоко", "банан"]\nfruits.append("апельсин")\nprint(fruits[0])</pre></div>` }
                 ]
             },
             {
-                id: 13, type: 'pro', price: 50,
-                title: "Асинхронность (asyncio)",
-                desc: "async/await для высокой производительности.",
+                id: 5, title: "Работа с файлами",
+                desc: "Чтение и запись файлов, менеджер контекста with.",
                 lessons: [
-                    {
-                        title: "Урок 14.1: async/await",
-                        content: `
-                            <h3>Асинхронные функции</h3>
-                            <div class="code-block">
-<pre><span class="keyword">import</span> <span class="variable">asyncio</span>
-
-<span class="keyword">async def</span> <span class="function">fetch</span>():
-    <span class="keyword">await</span> <span class="variable">asyncio</span>.<span class="function">sleep</span>(<span class="number">1</span>)
-    <span class="keyword">return</span> <span class="string">"Готово!"</span>
-
-<span class="keyword">print</span>(<span class="variable">asyncio</span>.<span class="function">run</span>(<span class="function">fetch</span>()))</pre>
-                            </div>
-                        `
-                    }
+                    { title: "Урок 6.1: open/read/write", content: `<div class="code-block"><pre>with open("file.txt", "w") as f:\n    f.write("Hello")\n\nwith open("file.txt", "r") as f:\n    print(f.read())</pre></div>` }
                 ]
             },
             {
-                id: 14, type: 'pro', price: 50,
-                title: "Type Hints",
-                desc: "Типизация в Python: mypy, аннотации, дженерики.",
+                id: 6, title: "ООП: Классы и объекты",
+                desc: "Основы объектно-ориентированного программирования.",
                 lessons: [
-                    {
-                        title: "Урок 15.1: Аннотации типов",
-                        content: `
-                            <h3>Type Hints</h3>
-                            <div class="code-block">
-<pre><span class="keyword">def</span> <span class="function">add</span>(<span class="variable">a</span>: <span class="class-name">int</span>, <span class="variable">b</span>: <span class="class-name">int</span>) -> <span class="class-name">int</span>:
-    <span class="keyword">return</span> <span class="variable">a</span> <span class="operator">+</span> <span class="variable">b</span>
-
-<span class="variable">nums</span>: <span class="class-name">list</span>[<span class="class-name">int</span>] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</pre>
-                            </div>
-                        `
-                    }
+                    { title: "Урок 7.1: Классы", content: `<div class="code-block"><pre>class Dog:\n    def __init__(self, name):\n        self.name = name\n    def bark(self):\n        print(f"{self.name} Гав!")\n\ndog = Dog("Бобик")\ndog.bark()</pre></div>` }
                 ]
             },
             {
-                id: 15, type: 'pro', price: 50,
-                title: "SQL + Python",
+                id: 7, title: "Обработка ошибок",
+                desc: "try/except/finally, обработка исключений.",
+                lessons: [
+                    { title: "Урок 8.1: try/except", content: `<div class="code-block"><pre>try:\n    x = int(input("Число: "))\n    print(10 / x)\nexcept ZeroDivisionError:\n    print("На ноль нельзя!")</pre></div>` }
+                ]
+            },
+            {
+                id: 8, title: "Модули и pip",
+                desc: "Импорт модулей, установка сторонних библиотек.",
+                lessons: [
+                    { title: "Урок 9.1: import", content: `<div class="code-block"><pre>import random\nprint(random.randint(1, 100))</pre></div>` }
+                ]
+            },
+            {
+                id: 9, title: "Продвинутый ООП",
+                desc: "Магические методы, наследование, полиморфизм.",
+                lessons: [
+                    { title: "Урок 10.1: Магические методы", content: `<div class="code-block"><pre>class Book:\n    def __init__(self, title):\n        self.title = title\n    def __str__(self):\n        return f"Книга: {self.title}"</pre></div>` }
+                ]
+            },
+            {
+                id: 10, title: "Декораторы",
+                desc: "Расширение поведения функций, @wraps.",
+                lessons: [
+                    { title: "Урок 11.1: Декораторы", content: `<div class="code-block"><pre>def my_decorator(func):\n    def wrapper():\n        print("До")\n        func()\n        print("После")\n    return wrapper\n\n@my_decorator\ndef hello():\n    print("Привет")\n\nhello()</pre></div>` }
+                ]
+            },
+            {
+                id: 11, title: "Генераторы и итераторы",
+                desc: "Ленивые вычисления, ключевое слово yield.",
+                lessons: [
+                    { title: "Урок 12.1: yield", content: `<div class="code-block"><pre>def count_down(n):\n    while n > 0:\n        yield n\n        n -= 1\n\nfor x in count_down(3):\n    print(x)</pre></div>` }
+                ]
+            },
+            {
+                id: 12, title: "Метаклассы",
+                desc: "Классы, создающие классы, type() и metaclass.",
+                lessons: [
+                    { title: "Урок 13.1: type", content: `<div class="code-block"><pre>User = type('User', (), {'name': 'Иван'})\nu = User()\nprint(u.name)</pre></div>` }
+                ]
+            },
+            {
+                id: 13, title: "Асинхронность (asyncio)",
+                desc: "async/await, конкурентное программирование.",
+                lessons: [
+                    { title: "Урок 14.1: async/await", content: `<div class="code-block"><pre>import asyncio\n\nasync def fetch():\n    await asyncio.sleep(1)\n    return "Готово!"\n\nprint(asyncio.run(fetch()))</pre></div>` }
+                ]
+            },
+            {
+                id: 14, title: "Type Hints",
+                desc: "Аннотации типов, mypy, дженерики.",
+                lessons: [
+                    { title: "Урок 15.1: Аннотации", content: `<div class="code-block"><pre>def add(a: int, b: int) -> int:\n    return a + b\n\nnums: list[int] = [1, 2, 3]</pre></div>` }
+                ]
+            },
+            {
+                id: 15, title: "SQL + Python",
                 desc: "SQLite, PostgreSQL, SQLAlchemy ORM.",
                 lessons: [
-                    {
-                        title: "Урок 16.1: SQLite",
-                        content: `
-                            <h3>Работа с SQLite</h3>
-                            <div class="code-block">
-<pre><span class="keyword">import</span> <span class="variable">sqlite3</span>
-
-<span class="variable">conn</span> = <span class="variable">sqlite3</span>.<span class="function">connect</span>(<span class="string">"db.db"</span>)
-<span class="variable">c</span> = <span class="variable">conn</span>.<span class="function">cursor</span>()
-<span class="variable">c</span>.<span class="function">execute</span>(<span class="string">"CREATE TABLE IF NOT EXISTS users (id INT, name TEXT)"</span>)
-<span class="variable">c</span>.<span class="function">execute</span>(<span class="string">"INSERT INTO users VALUES (1, 'Иван')"</span>)
-<span class="variable">conn</span>.<span class="function">commit</span>()</pre>
-                            </div>
-                        `
-                    }
+                    { title: "Урок 16.1: SQLite", content: `<div class="code-block"><pre>import sqlite3\nconn = sqlite3.connect("db.db")\nc = conn.cursor()\nc.execute("CREATE TABLE users (id INT, name TEXT)")</pre></div>` }
                 ]
             },
             {
-                id: 16, type: 'pro', price: 50,
-                title: "FastAPI",
+                id: 16, title: "FastAPI",
                 desc: "Современный веб-фреймворк с автодокументацией.",
                 lessons: [
-                    {
-                        title: "Урок 17.1: Первое API",
-                        content: `
-                            <h3>FastAPI</h3>
-                            <div class="code-block">
-<pre><span class="keyword">from</span> <span class="variable">fastapi</span> <span class="keyword">import</span> <span class="class-name">FastAPI</span>
-
-<span class="variable">app</span> = <span class="function">FastAPI</span>()
-
-<span class="decorator">@app.get</span>(<span class="string">"/"</span>)
-<span class="keyword">def</span> <span class="function">root</span>():
-    <span class="keyword">return</span> {<span class="string">"msg"</span>: <span class="string">"Hello!"</span>}
-
-<span class="comment"># uvicorn main:app --reload</span></pre>
-                            </div>
-                        `
-                    }
+                    { title: "Урок 17.1: FastAPI", content: `<div class="code-block"><pre>from fastapi import FastAPI\napp = FastAPI()\n\n@app.get("/")\ndef root():\n    return {"msg": "Hello!"}</pre></div>` }
                 ]
             },
             {
-                id: 17, type: 'pro', price: 50,
-                title: "Data Science",
-                desc: "NumPy, Pandas, Matplotlib для анализа данных.",
+                id: 17, title: "Data Science (Pandas, NumPy)",
+                desc: "Анализ данных и визуализация.",
                 lessons: [
-                    {
-                        title: "Урок 18.1: Pandas",
-                        content: `
-                            <h3>Pandas DataFrame</h3>
-                            <div class="code-block">
-<pre><span class="keyword">import</span> <span class="variable">pandas</span> <span class="keyword">as</span> <span class="variable">pd</span>
-
-<span class="variable">df</span> = <span class="variable">pd</span>.<span class="class-name">DataFrame</span>({
-    <span class="string">'name'</span>: [<span class="string">'Аня'</span>, <span class="string">'Боря'</span>],
-    <span class="string">'age'</span>: [<span class="number">25</span>, <span class="number">30</span>]
-})
-<span class="keyword">print</span>(<span class="variable">df</span>.<span class="function">head</span>())</pre>
-                            </div>
-                        `
-                    }
+                    { title: "Урок 18.1: Pandas", content: `<div class="code-block"><pre>import pandas as pd\ndf = pd.DataFrame({'name': ['Аня', 'Боря'], 'age': [25, 30]})\nprint(df.head())</pre></div>` }
                 ]
             },
             {
-                id: 18, type: 'pro', price: 50,
-                title: "Telegram-боты (aiogram)",
-                desc: "Создайте своего Telegram-бота за 1 час.",
+                id: 18, title: "Telegram-боты (aiogram)",
+                desc: "Создание ботов с нуля.",
                 lessons: [
-                    {
-                        title: "Урок 19.1: Эхо-бот",
-                        content: `
-                            <h3>aiogram 3.x</h3>
-                            <div class="code-block">
-<pre><span class="keyword">from</span> <span class="variable">aiogram</span> <span class="keyword">import</span> <span class="class-name">Bot</span>, <span class="class-name">Dispatcher</span>
-<span class="keyword">import</span> <span class="variable">asyncio</span>
-
-<span class="variable">bot</span> = <span class="class-name">Bot</span>(<span class="variable">token</span><span class="operator">=</span><span class="string">"TOKEN"</span>)
-<span class="variable">dp</span> = <span class="class-name">Dispatcher</span>()
-
-<span class="decorator">@dp.message</span>()
-<span class="keyword">async def</span> <span class="function">echo</span>(<span class="variable">msg</span>):
-    <span class="keyword">await</span> <span class="variable">msg</span>.<span class="function">answer</span>(<span class="variable">msg</span>.<span class="variable">text</span>)
-
-<span class="variable">asyncio</span>.<span class="function">run</span>(<span class="variable">dp</span>.<span class="function">start_polling</span>(<span class="variable">bot</span>))</pre>
-                            </div>
-                        `
-                    }
+                    { title: "Урок 19.1: Эхо-бот", content: `<div class="code-block"><pre>from aiogram import Bot, Dispatcher\n# ... базовый код бота</pre></div>` }
                 ]
             },
             {
-                id: 19, type: 'pro', price: 50,
-                title: "Парсинг данных",
+                id: 19, title: "Парсинг данных",
                 desc: "BeautifulSoup, Selenium, Scrapy.",
                 lessons: [
-                    {
-                        title: "Урок 20.1: BeautifulSoup",
-                        content: `
-                            <h3>Веб-парсинг</h3>
-                            <div class="code-block">
-<pre><span class="keyword">import</span> <span class="variable">requests</span>
-<span class="keyword">from</span> <span class="variable">bs4</span> <span class="keyword">import</span> <span class="class-name">BeautifulSoup</span>
-
-<span class="variable">r</span> = <span class="variable">requests</span>.<span class="function">get</span>(<span class="string">"https://example.com"</span>)
-<span class="variable">soup</span> = <span class="class-name">BeautifulSoup</span>(<span class="variable">r</span>.<span class="variable">text</span>, <span class="string">"html.parser"</span>)
-
-<span class="keyword">for</span> <span class="variable">h1</span> <span class="keyword">in</span> <span class="variable">soup</span>.<span class="function">find_all</span>(<span class="string">"h1"</span>):
-    <span class="keyword">print</span>(<span class="variable">h1</span>.<span class="variable">text</span>)</pre>
-                            </div>
-                        `
-                    }
+                    { title: "Урок 20.1: BeautifulSoup", content: `<div class="code-block"><pre>import requests\nfrom bs4 import BeautifulSoup\nr = requests.get("https://example.com")\nsoup = BeautifulSoup(r.text, "html.parser")</pre></div>` }
                 ]
             }
         ];
 
-        // ============================================
-        // СОСТОЯНИЕ ПРИЛОЖЕНИЯ
-        // ============================================
-        let currentTab = 'free';
+        // Состояние
         let currentCourseIndex = 0;
         let currentLessonIndex = 0;
-        let balance = 500;
-        const ownedProCourses = new Set();
         const completedLessons = new Set();
 
-        // ============================================
-        // РЕНДЕРИНГ
-        // ============================================
+        // Рендер сайдбара
         function renderSidebar() {
-            const freeCourses = allCourses.filter(c => c.type === 'free');
-            const proCourses = allCourses.filter(c => c.type === 'pro');
-
-            let sidebarHTML = '';
-
-            if (currentTab === 'free') {
-                sidebarHTML = `
-                    <div class="section-divider">
-                        <span>📘 Бесплатные курсы</span>
-                        <span class="count">${freeCourses.length}</span>
-                    </div>
-                    ${freeCourses.map((c, i) => `
-                        <div class="course-item ${i === currentCourseIndex ? 'active' : ''}" 
-                             onclick="openCourse(${allCourses.indexOf(c)})">
-                            <span class="num">${(i + 1).toString().padStart(2, '0')}</span>
-                            ${c.title}
-                            <span class="badge free">FREE</span>
-                        </div>
-                    `).join('')}
-                `;
-            } else {
-                sidebarHTML = `
-                    <div class="section-divider">
-                        <span>💎 Pro-курсы · 50₽</span>
-                        <span class="count">${proCourses.length}</span>
-                    </div>
-                    ${proCourses.map((c) => {
-                    const idx = allCourses.indexOf(c);
-                    const isOwned = ownedProCourses.has(c.id);
-                    return `
-                            <div class="course-item pro ${idx === currentCourseIndex ? 'active' : ''} ${!isOwned ? 'locked' : ''}" 
-                                 onclick="openCourse(${idx})">
-                                <span class="num">${(c.id - 9).toString().padStart(2, '0')}</span>
-                                ${c.title}
-                                <span class="badge ${isOwned ? 'owned' : 'paid'}">
-                                    ${isOwned ? '✓ OWNED' : '50₽'}
-                                </span>
-                            </div>
-                        `;
-                }).join('')}
-                `;
-            }
-
-            document.getElementById('sidebar').innerHTML = sidebarHTML;
+            let html = `
+            <div class="section-divider">
+                <span>📚 Все курсы Python</span>
+                <span class="count">${allCourses.length}</span>
+            </div>
+            ${allCourses.map((c, idx) => `
+                <div class="course-item ${idx === currentCourseIndex ? 'active' : ''}" 
+                     onclick="openCourse(${idx})">
+                    <span>${(idx + 1).toString().padStart(2, '0')}</span>
+                    ${c.title}
+                    <span class="badge free">FREE</span>
+                </div>
+            `).join('')}
+        `;
+            document.getElementById('sidebar').innerHTML = html;
         }
 
+        // Рендер контента курса
         function renderCourse() {
             const course = allCourses[currentCourseIndex];
-            const isPro = course.type === 'pro';
-
-            // Переключаем режим оформления
-            document.body.classList.toggle('pro-mode', isPro);
-            document.getElementById('userInfo').style.display = isPro ? 'flex' : 'none';
-
-            // Если платный и не куплен
-            if (isPro && !ownedProCourses.has(course.id)) {
-                document.getElementById('content').innerHTML = `
-                    <div class="breadcrumb">
-                        CodeHub / Pro-курсы / <span>${course.title}</span>
-                    </div>
-                    <h1>${course.title}</h1>
-                    <p class="course-desc">${course.desc}</p>
-
-                    <div class="locked-screen">
-                        <div class="lock-icon">🔒</div>
-                        <h2>Курс заблокирован</h2>
-                        <p style="color:#8b949e;">Чтобы получить доступ к урокам, оплатите курс</p>
-                        <div class="price-tag">${course.price}</div>
-
-                        <ul class="features">
-                            <li>✅ Полный доступ ко всем урокам</li>
-                            <li>✅ Практические задания</li>
-                            <li>✅ Исходные коды проектов</li>
-                            <li>✅ Сертификат о прохождении</li>
-                            <li>✅ Пожизненный доступ</li>
-                        </ul>
-
-                        <button class="buy-btn" onclick="buyCourse()">
-                            Купить и начать обучение
-                        </button>
-                        <p style="margin-top: 20px; color:#6e7681; font-size: 13px;">
-                            💰 На вашем счету: ${balance} ₽
-                        </p>
-                    </div>
-                `;
-                return;
-            }
-
-            // Урок
             const lesson = course.lessons[currentLessonIndex];
             const isLastLesson = currentLessonIndex === course.lessons.length - 1;
 
             document.getElementById('content').innerHTML = `
-                <div class="breadcrumb">
-                    CodeHub / ${isPro ? 'Pro-курсы' : 'Бесплатные'} / <span>${course.title}</span>
-                </div>
-                <h1>${course.title}</h1>
-                <p class="course-desc">${course.desc}</p>
+            <h1>${course.title}</h1>
+            <p class="course-desc">${course.desc}</p>
 
-                ${isPro ? '<div class="course-info"><div class="info-badge">✅ Курс куплен</div></div>' : ''}
+            <h2>📚 Уроки курса</h2>
+            <div class="lessons-box">
+                ${course.lessons.map((l, i) => `
+                    <div class="lesson-item" onclick="openLesson(${i})">
+                        <span>${(i + 1).toString().padStart(2, '0')}</span>
+                        ${l.title}
+                        ${completedLessons.has(`${course.id}-${i}`) ? ' ✅' : ''}
+                    </div>
+                `).join('')}
+            </div>
 
-                <h2>📚 Уроки курса</h2>
-                <div class="lessons-box">
-                    ${course.lessons.map((l, i) => `
-                        <div class="lesson-item" onclick="openLesson(${i})">
-                            <span>${(i + 1).toString().padStart(2, '0')}</span>
-                            ${l.title}
-                            ${completedLessons.has(`${course.id}-${i}`) ? '✅' : ''}
-                        </div>
-                    `).join('')}
-                </div>
+            <h2>${lesson.title}</h2>
+            ${lesson.content}
 
-                <h2>${lesson.title}</h2>
-                ${lesson.content}
-
-                <div class="nav-buttons">
-                    <button class="nav-btn prev" onclick="prevLesson()" 
-                        ${currentLessonIndex === 0 ? 'disabled' : ''}>
-                        Предыдущий
-                    </button>
-                    ${!isPro ? `<button class="complete-btn" onclick="completeLesson()">✓ Завершить</button>` : ''}
-                    <button class="nav-btn next" onclick="nextLesson()"
-                        ${isLastLesson ? 'disabled' : ''}>
-                        Следующий
-                    </button>
-                </div>
-            `;
+            <div class="nav-buttons">
+                <button class="nav-btn prev" onclick="prevLesson()" 
+                    ${currentLessonIndex === 0 ? 'disabled' : ''}>
+                    ← Предыдущий
+                </button>
+                <button class="complete-btn" onclick="completeLesson()">✓ Завершить урок</button>
+                <button class="nav-btn next" onclick="nextLesson()"
+                    ${isLastLesson ? 'disabled' : ''}>
+                    Следующий →
+                </button>
+            </div>
+        `;
         }
 
-        // ============================================
-        // ДЕЙСТВИЯ
-        // ============================================
-        function switchTab(tab) {
-            currentTab = tab;
-            document.getElementById('tabFree').classList.toggle('active', tab === 'free');
-            document.getElementById('tabPro').classList.toggle('active', tab === 'pro');
-
-            // Открываем первый курс выбранной вкладки
-            if (tab === 'free') {
-                currentCourseIndex = 0;
-            } else {
-                currentCourseIndex = 10; // Первый Pro-курс
-            }
-            currentLessonIndex = 0;
-
-            renderSidebar();
-            renderCourse();
-            window.scrollTo(0, 0);
-        }
-
+        // Действия
         function openCourse(idx) {
             currentCourseIndex = idx;
             currentLessonIndex = 0;
@@ -1439,35 +613,17 @@
             renderCourse();
         }
 
-        function buyCourse() {
-            const course = allCourses[currentCourseIndex];
-            if (balance < course.price) {
-                alert('❌ Недостаточно средств! Пополните баланс.');
-                return;
-            }
-            document.getElementById('modalCourseName').textContent = course.title;
-            document.getElementById('modalPrice').textContent = course.price;
-            document.getElementById('paymentModal').classList.add('active');
-        }
-
-        function confirmPurchase() {
-            const course = allCourses[currentCourseIndex];
-            balance -= course.price;
-            ownedProCourses.add(course.id);
-            document.getElementById('balance').textContent = balance;
-            document.getElementById('paymentModal').classList.remove('active');
-
+        function switchTab() {
+            // Просто заглушка, всё равно все курсы бесплатны
             renderSidebar();
             renderCourse();
-            alert(`🎉 Курс "${course.title}" успешно куплен!`);
-        }
-
-        function closeModal() {
-            document.getElementById('paymentModal').classList.remove('active');
         }
 
         function showHome() {
-            switchTab('free');
+            currentCourseIndex = 0;
+            currentLessonIndex = 0;
+            renderSidebar();
+            renderCourse();
         }
 
         // Запуск
